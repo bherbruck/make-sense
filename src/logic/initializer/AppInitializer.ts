@@ -6,6 +6,7 @@ import {PlatformModel} from "../../staticModels/PlatformModel";
 import {EventType} from "../../data/enums/EventType";
 import {GeneralSelector} from "../../store/selectors/GeneralSelector";
 import {EnvironmentUtil} from "../../utils/EnvironmentUtil";
+import { loadStateFromLocalStorage } from "../../store/labels/actionCreators";
 
 export class AppInitializer {
     public static inti():void {
@@ -17,6 +18,7 @@ export class AppInitializer {
         window.addEventListener(EventType.KEY_DOWN, AppInitializer.disableUnwantedKeyBoardBehaviour);
         window.addEventListener(EventType.KEY_PRESS, AppInitializer.disableUnwantedKeyBoardBehaviour);
         ContextManager.init();
+        store.dispatch(loadStateFromLocalStorage())
     }
 
     private static handleAccidentalPageExit = () => {

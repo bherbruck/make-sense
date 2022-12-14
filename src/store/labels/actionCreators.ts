@@ -2,6 +2,12 @@ import {LabelsActionTypes, ImageData, LabelName} from './types';
 import {Action} from '../Actions';
 import {LabelType} from '../../data/enums/LabelType';
 
+export function loadStateFromLocalStorage(): LabelsActionTypes {
+    return {
+        type: Action.LOAD_STATE_FROM_LOCAL_STORAGE,
+    };
+}
+
 export function updateActiveImageIndex(activeImageIndex: number): LabelsActionTypes {
     return {
         type: Action.UPDATE_ACTIVE_IMAGE_INDEX,

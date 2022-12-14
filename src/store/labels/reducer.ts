@@ -17,6 +17,13 @@ export function labelsReducer(
     action: LabelsActionTypes
 ): LabelsState {
     switch (action.type) {
+        case Action.LOAD_STATE_FROM_LOCAL_STORAGE: {
+            if (!localStorage.getItem('labels'))
+                localStorage.setItem('labels', JSON.stringify(state));
+            return localStorage.getItem('labels')
+                ? JSON.parse(localStorage.getItem('labels'))
+                : state;
+        }
         case Action.UPDATE_ACTIVE_IMAGE_INDEX: {
             return {
                 ...state,

@@ -70,6 +70,10 @@ export type LabelsState = {
     labels: LabelName[];
 }
 
+interface LoadStateFromLocalStorage {
+    type: typeof Action.LOAD_STATE_FROM_LOCAL_STORAGE;
+}
+
 interface UpdateActiveImageIndex {
     type: typeof Action.UPDATE_ACTIVE_IMAGE_INDEX;
     payload: {
@@ -141,7 +145,9 @@ interface UpdateFirstLabelCreatedFlag {
     }
 }
 
-export type LabelsActionTypes = UpdateActiveImageIndex
+export type LabelsActionTypes = 
+    | LoadStateFromLocalStorage
+    | UpdateActiveImageIndex
     | UpdateActiveLabelNameId
     | UpdateActiveLabelType
     | UpdateImageDataById
